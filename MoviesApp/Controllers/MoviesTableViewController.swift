@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class MoviesTableViewController: UITableViewController {
     
@@ -15,6 +16,13 @@ class MoviesTableViewController: UITableViewController {
         super.viewDidLoad()
         populateMovies()
         self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    @IBSegueAction func showMoviesDetailSegue(_ coder: NSCoder) -> UIViewController? {
+        guard let selectedIndex = tableView.indexPathForSelectedRow else {
+            fatalError("No index is selected")
+        }
+        return UIHostingController(coder: coder, rootView: MoviesDetailView(movie: movies[selectedIndex.row]))
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
