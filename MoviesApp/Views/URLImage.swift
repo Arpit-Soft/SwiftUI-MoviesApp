@@ -20,7 +20,7 @@ struct URLImage: View {
     
     var body: some View {
         if let data = imageLoader.downloadedData {
-            Image(uiImage: UIImage(data: data)!).resizable()
+            Image(uiImage: UIImage(data: data)!)
         }
         else {
             Image(self.placeholder).resizable()

@@ -9,20 +9,30 @@ import SwiftUI
 
 struct MoviesDetailView: View {
     
+    @State var selected: Bool = false
+    
     let movie: Movie
     
     var body: some View {
+        
         ZStack {
+            Color.black
+                .edgesIgnoringSafeArea(.all)
+            
             VStack {
+                HStack {
+                    Spacer()
+                    StarViewRepresentation(selected: $selected)
+                        .frame(width: 35, height: 35)
+                        .padding()
+                }
                 URLImage(url: movie.poster)
                 Text(movie.title)
-                    .foregroundColor(.white)
-                    .font(.title)
+                    .foregroundColor(Color.white)
+                    .padding()
                 Spacer()
             }
         }
-        .background(Color.black)
-        .edgesIgnoringSafeArea(.all)
     }
 }
 
